@@ -14,7 +14,6 @@ form {
 #title {
     text-align: center;
     font-size: 36px;
-    line-height: 10%;
 }
 
 #footer {
@@ -71,3 +70,14 @@ form {
 #ui-datepicker-div {
     display: none;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 5vw;
+    }
+    
+    form {
+        width: 75%;
+    }
+    
+  }
