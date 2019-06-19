@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>MoodTracker</title>
+        <meta charset="UTF-8"> 
+        <link href="site.css" rel="stylesheet"></link>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    </head>
+    <body>
+        <div id="title">
+            <p>MoodTracker</p>
+        </div>
+        <div id="content">
+            <canvas id="moodChart"></canvas>
+            <script src="js/chart.js"></script>
+        </div>
+        <div id="footer">
+            <form id="addMood">
+                <fieldset>
+                    <legend>How are you feeling right now?</legend>
+                    <input type="radio" name="currentMood" value="0">😭
+                    <input type="radio" name="currentMood" value="1">😢
+                    <input type="radio" name="currentMood" value="2">🙁
+                    <input type="radio" name="currentMood" value="3" checked>😐
+                    <input type="radio" name="currentMood" value="4">🙂
+                    <input type="radio" name="currentMood" value="5">😃
+                    <input type="radio" name="currentMood" value="6">😁
+                    <p>Date: <input type="text" id="datepicker" name="date" size="30"></p>
+                    <p>Tag (Optional): <input type="text", name="tag"></p><br>
+                    <input type="submit" value="Add mood to graph.">
+                </fieldset>
+            </form>
+            <p>Made by Coizioc • <button id="clear">Clear cache</button></p>
+            
+        </div>
+    </body>
+</html>
