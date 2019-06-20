@@ -61,12 +61,18 @@ $( document ).ready(function() {
         moodData = JSON.parse(localStorage.getItem("moodData"));
         updateChart();
     }
+
+    $('#importScreen').hide(); 
     
     $( "#datepicker" ).datepicker().datepicker('setDate', new Date());
 
+    $( "#importDaylio" ).click(function() {
+        $( '#importScreen' ).show();
+    });
+
     $( "#clear" ).click(function() {
         var r = confirm("This will remove all of your mood data. Are you sure you want to clear cache?");
-        if (r == true) {
+        if(r) {
             localStorage.setItem("moodData", "{\"data\": []}");
             moodData = {data: []};
             updateChart();
@@ -87,7 +93,23 @@ $( document ).ready(function() {
         }
         event.preventDefault();
     });
+
+    $( "#import" ).submit(function( event ) {
+        $('#importScreen').hide(); 
+        var values = getFormValues("#import");
+        // TODOd validate CSV
+        moodData = moodDataFromCSV(values.inputData);
+        localStorage.setItem("moodData", JSON.stringify(moodData));
+        updateChart();
+        event.preventDefault();
+    });
 });
+
+function longToShortDate(longDate) {
+    var datePieces = longDate.split("-");
+    var shortMonthName = MONTHS[parseInt(datePieces[1]) - 1].substr(0,3);
+    return shortMonthName + " " + datePieces[2];
+}
 
 function getFormValues(formID) {
     var values = {};
@@ -141,3 +163,58 @@ function addMood(currMood) {
     moodData.data.sort(function(a, b) { return (a.date > b.date) ? 1 : -1});
     localStorage.setItem("moodData", JSON.stringify(moodData));
 }
+
+function convertDaylioMood(daylioMood) {
+    switch(daylioMood) {
+        case "awful":
+            return 0;
+        case "fugly":
+            return 1;
+        case "bad":
+            return 1;
+        case "apathy":
+            return 2;
+        case "meh":
+            return 3;
+        case "good":
+            return 4;
+        case "rad":
+            return 6;
+        default:
+            return 3;
+    }
+}
+
+function moodDataFromCSV(csv) {
+    var csvObjArr = csvToObjectArr(csv);
+    csvObjArr.sort(function(a, b) { return (a.full_date > b.full_date) ? 1 : -1});
+    var tempData = {data: []};
+
+    for(var i = 0; i < csvObjArr.length; i++) {
+        console.log(csvObjArr[i].full_date + ": " + csvObjArr[i].mood + " (" + convertDaylioMood(csvObjArr[i].mood) + ")");
+        var tempObj = {mood: convertDaylioMood(csvObjArr[i].mood),
+                       date:csvObjArr[i].full_date,
+                       tag:csvObjArr[i].activities};
+        tempData.data.push(tempObj);
+    }
+    return tempData;
+}
+
+function csvToObjectArr(csv){
+    var lines = csv.split("\n");
+    var result = [];
+    var headers = lines[0].split(",");
+  
+    for(var i = 1; i < lines.length; i++){
+        var obj = {};
+        var currentline = lines[i].split(",");
+  
+        for(var j = 0; j < headers.length; j++){
+            obj[headers[j]] = currentline[j];
+        }
+  
+        result.push(obj);
+    }
+  
+    return result;
+  }

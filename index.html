@@ -11,6 +11,16 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     </head>
     <body>
+        <div id="importScreen">
+            <div id="importContent">
+                <form id="import">
+                    <p>Please paste the CSV file exported from Daylio into the text box below.</p>
+                    <textarea name="inputData" rows="20" cols="50" form="import"></textarea><br>
+                    <br>
+                    <input type="submit" value="Load CSV into MoodTracker.">
+                </form>
+        </div>
+        </div>
         <div id="title">
             <p>MoodTracker</p>
         </div>
@@ -34,7 +44,7 @@
                     <input type="submit" value="Add mood to graph.">
                 </fieldset>
             </form>
-            <p>Made by Coizioc • <button id="clear">Clear cache</button></p>
+            <p>Made by Coizioc • <button id="importDaylio">Import Daylio CSV</button> • <button id="clear">Clear cache</button></p>
             
         </div>
     </body>
