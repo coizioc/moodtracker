@@ -9,6 +9,7 @@
             crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="js/consts.js"></script>
     </head>
     <body>
         <div id="importScreen">
@@ -26,6 +27,7 @@
         </div>
         <div id="content">
             <canvas id="moodChart"></canvas>
+            
             <script src="js/chart.js"></script>
         </div>
         <div id="footer">
@@ -44,7 +46,7 @@
                     <input type="submit" value="Add mood to graph.">
                 </fieldset>
             </form>
-            <p>Made by Coizioc • <button id="importDaylio">Import Daylio CSV</button> • <button id="clear">Clear cache</button></p>
+            <p><button onclick="window.location.href = 'stats.html';">See Monthly Stats</button> • <button id="importDaylio">Import Daylio CSV</button> • <button id="clear">Clear Cache</button></p>
             
         </div>
     </body>

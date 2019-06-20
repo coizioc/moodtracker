@@ -1,36 +1,3 @@
-var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-var CHART_OPTIONS = {
-    scales: {
-        yAxes: [{
-            display: true,
-            ticks: {
-                min: 0,
-                max: 6,
-                stepSize: 1,
-                defaultFontSize: 36,
-                callback: function(label, index, labels) {
-                    switch (label) {
-                        case 0:
-                            return '😭';
-                        case 1:
-                            return '😢';
-                        case 2:
-                            return '🙁';
-                        case 3:
-                            return '😐';
-                        case 4:
-                            return '🙂';
-                        case 5:
-                            return '😃';
-                        case 6:
-                            return '😁';
-                    }
-                }
-            }
-        }]
-    }
-}
-
 var moodData = {data: []};
 
 var ctx = document.getElementById('moodChart').getContext('2d');
@@ -191,6 +158,9 @@ function moodDataFromCSV(csv) {
     var tempData = {data: []};
 
     for(var i = 0; i < csvObjArr.length; i++) {
+        if(csvObjArr[i].mood === undefined) {
+            continue;
+        }
         console.log(csvObjArr[i].full_date + ": " + csvObjArr[i].mood + " (" + convertDaylioMood(csvObjArr[i].mood) + ")");
         var tempObj = {mood: convertDaylioMood(csvObjArr[i].mood),
                        date:csvObjArr[i].full_date,

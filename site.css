@@ -7,6 +7,43 @@ body {
     background-color: #333;
 }
 
+button, input[type=submit] {
+    display: inline-block;
+    border: 2px;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: #333;
+    color: rgb(255, 255, 255);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 25px;
+}
+
+button:focus, input[type=submit]:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active, input[type=submit]:active {
+    transform: scale(0.99);
+}
+
+button:hover, input[type=submit]:hover {
+    background: #777;
+}
+
+button:disabled, input[type=submit]:disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
 form {
     display: inline-block;
 }
