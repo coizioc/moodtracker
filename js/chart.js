@@ -2,23 +2,7 @@ var moodData = {data: []};
 
 var ctx = document.getElementById('moodChart').getContext('2d');
 
-var moodChart = new Chart(ctx, {
-    type: 'line',
-
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'Avg. Daily Mood',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 255, 255)',
-            lineTension: 0,
-            fill: false,
-            data: []
-        }]
-    },
-
-    options: CHART_OPTIONS
-});
+var moodChart = ($(window).width() > 600) ? new Chart(ctx, DESKTOP_LINE_CHART) : new Chart(ctx, MOBILE_LINE_CHART);
 
 $( document ).ready(function() {
     if(localStorage.getItem("moodData") === null) {
