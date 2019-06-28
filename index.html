@@ -15,12 +15,13 @@
         <div id="importScreen">
             <div id="importContent">
                 <form id="import">
-                    <p>Please paste the CSV file exported from Daylio into the text box below.</p>
+                    <legend>Please paste the CSV file exported from Daylio into the text box below.</legend>
                     <textarea name="inputData" rows="20" cols="50" form="import"></textarea><br>
                     <br>
                     <input type="submit" value="Load CSV into MoodTracker.">
                 </form>
-        </div>
+                <button id="cancelImport">Cancel Import</button>
+            </div>
         </div>
         <div id="title">
             <p>MoodTracker</p>
@@ -46,7 +47,7 @@
                     <input type="submit" value="Add mood to graph.">
                 </fieldset>
             </form>
-            <p><button onclick="window.location.href = 'stats.html';">See Monthly Stats</button> • <button id="importDaylio">Import Daylio CSV</button> • <button id="clear">Clear Cache</button></p>
+            <p><button onclick="window.location.href = 'stats.html';">See Weekly/Monthly Stats</button> • <button id="importDaylio">Import Daylio CSV</button> • <button id="clear">Clear Cache</button></p>
             
         </div>
     </body>
