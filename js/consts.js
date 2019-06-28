@@ -120,7 +120,7 @@ var DESKTOP_BAR_CHART = {
     data: {
         labels: [],
         datasets: [{
-            label: 'Avg. Monthly Mood',
+            label: 'Avg. Mood',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 255)',
             lineTension: 0,
@@ -137,7 +137,7 @@ var MOBILE_BAR_CHART = {
     data: {
         labels: [],
         datasets: [{
-            label: 'Avg. Monthly Mood',
+            label: 'Avg. Mood',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 255, 255)',
             lineTension: 0,
